@@ -5,7 +5,6 @@ class SessionsRepository:
         self.collection = db.sesiones
 
     async def create(self, session: dict):
-
         result = await self.collection.insert_one(session)
 
         return result

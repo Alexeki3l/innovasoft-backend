@@ -110,13 +110,10 @@ async def login(body: LoginRequest):
 
         response = await http_client.post(LOGIN_URL, json=payload)
 
-        print("LOGIN RESPONSE:", response, flush=True)
-
         status = response.get("status")
         data = response.get("data")
         error = response.get("error") or response.get("text")
 
-        # 🔥 validar error del backend externo
         if status and status >= 400:
             raise HTTPException(
                 status_code=status,
@@ -141,7 +138,6 @@ async def login(body: LoginRequest):
         raise e
 
     except Exception as e:
-        print("LOGIN ERROR:", str(e), flush=True)
         raise HTTPException(
             status_code=500,
             detail="Error interno del servidor"

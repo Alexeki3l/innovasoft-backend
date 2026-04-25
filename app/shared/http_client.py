@@ -28,7 +28,6 @@ class HTTPClient:
                     headers=headers
                 )
 
-                # intenta parsear JSON de forma segura
                 try:
                     data = response.json()
                 except Exception:
