@@ -8,6 +8,6 @@ if os.getenv("DEBUG", None) is None:
     load_dotenv(dotenv_path=path_env)
 
 
-client = AsyncIOMotorClient(os.getenv("MONGO_URL", "mongodb://localhost:27017"))
+client = AsyncIOMotorClient(os.getenv("MONGO_URL", "mongodb://localhost:27017"), tls=True, tlsAllowInvalidCertificates=True)
 
 db = client["innovasoft_local"]
